@@ -15,6 +15,7 @@
  *   our filesystem thread(s) cannot stall from syslog() calls.
  */
 
+#include <pthread.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
@@ -27,7 +28,6 @@
 #include <malloc.h>
 #endif
 
-#include <pthread.h>
 #include <stdarg.h>
 
 #include "usyslog.h"

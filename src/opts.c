@@ -8,6 +8,7 @@
 *            Bernd Schubert <bernd-schubert@gmx.de>
 */
 
+#include <pthread.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -15,7 +16,6 @@
 #include <errno.h>
 #include <sys/time.h>
 #include <sys/resource.h>
-#include <pthread.h>
 
 #include "conf.h"
 #include "opts.h"
@@ -86,9 +86,13 @@ int set_max_open_files(const char *arg)
 			__func__, arg);
 		exit(1);
 	}
+#ifndef __ZRT__
 	rlim.rlim_cur = max_files;
 	rlim.rlim_max = max_files;
 	if (setrlimit(RLIMIT_NOFILE, &rlim)) {
+#else
+	if (0) {
+#endif
 		fprintf(stderr, "%s: Setting the maximum number of files failed: %s\n",
 			__func__, strerror(errno));
 		exit(1);

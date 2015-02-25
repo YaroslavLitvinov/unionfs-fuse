@@ -831,7 +831,7 @@ static struct fuse_operations unionfs_oper = {
 #endif
 };
 
-int main(int argc, char *argv[]) {
+int unionfs_main(int argc, char *argv[]) {
 	struct fuse_args args = FUSE_ARGS_INIT(argc, argv);
 
 	init_syslog();

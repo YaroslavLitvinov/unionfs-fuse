@@ -23,9 +23,12 @@ void init_syslog(void);
 void usyslog(int priority, const char *format, ...);
 
 
+#ifdef __ZRT__
+#define USYSLOG(priority, format, ...)
+#else
 #define USYSLOG(priority, format, ...)  			\
 	do {							\
 		DBG(format, ##__VA_ARGS__);			\
 		usyslog(priority, format, ##__VA_ARGS__);	\
 	} while (0);
-
+#endif

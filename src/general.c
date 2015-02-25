@@ -11,6 +11,7 @@
 *
 */
 
+#include <pthread.h>
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
@@ -21,7 +22,6 @@
 #include <errno.h>
 #include <pwd.h>
 #include <grp.h>
-#include <pthread.h>
 
 #include "unionfs.h"
 #include "opts.h"

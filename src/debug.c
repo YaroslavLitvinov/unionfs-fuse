@@ -3,10 +3,10 @@
 * Copyright: Radek Podgorny <radek@podgorny.cz>, 
 *            Bernd Schubert <bernd.schubert@fastmail.fm>
 */
+#include <pthread.h>
 #include <stdio.h>
 #include <errno.h>
 #include <string.h>
-#include <pthread.h>
 
 #include "opts.h"
 #include "debug.h"

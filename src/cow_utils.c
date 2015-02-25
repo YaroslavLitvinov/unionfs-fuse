@@ -166,7 +166,11 @@ int copy_file(struct cow *cow)
 #ifdef VM_AND_BUFFER_CACHE_SYNCHRONIZED
 	if (fs->st_size > 0 && fs->st_size <= 8 * 1048576) {
 		if ((p = mmap(NULL, (size_t)fs->st_size, PROT_READ,
+#ifdef __ZRT__
+		    0, from_fd, (off_t)0)) == MAP_FAILED) {
+#else
 		    MAP_FILE|MAP_SHARED, from_fd, (off_t)0)) == MAP_FAILED) {
+#endif //__ZRT__
 			USYSLOG(LOG_WARNING,   "mmap: %s", cow->from_path);
 			rval = 1;
 		} else {

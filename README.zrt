@@ -1,0 +1,3 @@
+cd src
+PREFIX=$ZVM_PREFIX CFLAGS="-Dexit=exit_fuse_main -D__ZRT__" CC=x86_64-nacl-gcc make clean all install
+
